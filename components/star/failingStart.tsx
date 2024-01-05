@@ -9,24 +9,22 @@ const FallingStar: React.FC = () => {
 
     const animation = () => {
       let yPos = -100; // Start position
-      let rotation = 0; // Initial rotation
+      let xPos = 0; // Start x position
       let falling = true;
-
       const fall = () => {
         if (falling) {
           yPos += 1; // Speed of falling, increase for faster fall
-          rotation += 10; // Rotation speed, increase for faster rotation
-          if (yPos >= window.innerHeight) {
-            falling = false; // Stop falling when it reaches the bottom
+          xPos += 1; // Speed of diagonal movement, adjust as needed
+          if (yPos >= window.innerHeight || xPos >= window.innerWidth) {
+            falling = false; // Stop falling when it reaches the bottom or goes out of screen
           }
         } else {
-          yPos -= 1; // Move back up
-          if (yPos <= -100) {
-            falling = true; // Reset at the top
-          }
+          yPos = -100; // Reset y position
+          xPos = 0; // Reset x position
+          falling = true; // Restart from the top-left corner
         }
 
-        star!.style.transform = `translateY(${yPos}px) rotate(${rotation}deg)`;
+        star!.style.transform = `translate(${xPos}px, ${yPos}px)`;
         requestAnimationFrame(fall);
       };
 
@@ -39,7 +37,7 @@ const FallingStar: React.FC = () => {
   return (
     <div
       ref={starRef}
-      className="absolute w-2 h-2"
+      className="absolute w-2 h-2 top-0 left-0"
       style={{ backgroundColor: 'yellow', borderRadius: '50%' }}
     />
   );

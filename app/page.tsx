@@ -5,11 +5,13 @@ import linkedinIcon from '../public/icons/linkedin-round-icon.svg';
 import twitterIcon from '../public/icons/twitter-round-icon.svg'; 
 import facebookIcon from '../public/icons/facebook-round-icon.svg'; 
 import Icon from '../components/icon';
+import FallingStarsBackground from '@/components/star/fallingStarsBackground';
 
 
 export default function Home() {
   return (
-    <main className='flex justify-between items-center h-screen bg-slate-600 '>
+    <main className='flex justify-between items-center h-screen bg-black '>
+      <FallingStarsBackground/>
       <div className='p-6 max-w-md mx-auto'>
         <h1 className='text-6xl'>Luca Braccani</h1>
         <div className='flex p-5 justify-between mx-5'>
